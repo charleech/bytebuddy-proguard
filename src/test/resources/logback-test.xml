@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (c) 2017-2017 By Charlee Chitsuk
+
+    All rights reserved. No part of this program and the accompanying
+    materials may be reproduced, distributed, or transmitted in
+    any form or by any means, including photocopying, recording, or
+    other electronic or mechanical methods, without the prior written
+    permission of the publisher, except in the case of brief quotations
+    embodied in critical reviews and certain other noncommercial uses
+    permitted by copyright law. For permission requests, write to the
+    publisher, addressed "Attention: Permissions Coordinator," at the
+    address below.
+
+    Charlee Chitsuk
+
+    Summit Computer Co.,Ltd.
+    109 C.C.T. Building, 12th Floor,
+    Surawong Road, Suriyawong,
+    Bangrak, Bangkok,
+    Thailand. 10500.
+
+    Tel. 66-2-237-6922 to 3, 66-2-238-0895 to 9
+    Fax: 66-2-236-7392
+    email: charlee@summitthai.com
+    website: http://www.summitthai.com
+
+-->
+<configuration>
+
+      <!-- Insert the current time formatted as "yyyyMMdd'T'HHmmss" under
+       the key "bySecond" into the logger context. This value will be
+       available to all subsequent configuration elements. -->
+    <timestamp key="byDate" datePattern="yyyyMMdd"/>
+
+
+    <appender name="consoleAsText" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder class="ch.qos.logback.core.encoder.LayoutWrappingEncoder">
+            <layout class="ch.qos.logback.classic.PatternLayout">
+                <Pattern>%date{yyyy-MM-dd HH:mm:ss.SSS,Asia/Bangkok} [%thread] [%mdc] %-5level %-45logger{36} - %L %M %msg%n</Pattern>
+            </layout>
+        </encoder>
+    </appender>
+
+    <logger name="org.jboss.weld" level="info"/>
+    <logger name="org.jboss.interceptor" level="info"/>
+    <logger name="org.hibernate.validator" level="info"/>
+
+    <logger name="com.sample" level="trace"/>
+    <logger name="test.com.sample" level="trace"/>
+    <logger name="it.test.com.sample" level="trace"/>
+
+    <root level="info">
+        <appender-ref ref="consoleAsText"/>
+    </root>
+</configuration>
